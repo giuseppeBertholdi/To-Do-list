@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lista de Tarefas</title>
+        <!-- Corrigido: Usando a tag <link> para referenciar o arquivo CSS -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+        <script>
+            function mostrarTarefasPassadas() {
+                var tarefasPassadasDiv = document.getElementById("tarefas-passadas");
+                if (tarefasPassadasDiv.style.display === "none") {
+                    tarefasPassadasDiv.style.display = "block";
+                } else {
+                    tarefasPassadasDiv.style.display = "none";
+                }
+            }
+        </script>
+    </head>
+<body>
+    <div class="lista-tarefa">
+        Lista de Tarefas
+    </div>
+    <form action="/adicionar" method="post">
+        <div class="tarefa-container">
+            <input type="text" name="tarefa" class="input-bonito" placeholder="Qual a tarefa de hoje?" autocomplete="off">
+            <button type="submit" class="botao-adicionar">Adicionar</button>
+        </div>
+    </form>
+
+    <!-- Conteúdo das tarefas passadas -->
+    <div id="tarefas-passadas" style="display: none;">
+        <h3>Tarefas Passadas</h3>
+        <ul>
+            {% for tarefa in tarefas_passadas %}
+                    <br>
+                <li>{{ tarefa }}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Botão para remover as tarefas passadas -->
+        <form action="/apagarConteudo" method="post">
+            <button type="submit" class="botao-remover-tarefas-passadas">Remover as Tarefas Passadas</button>
+        </form>
+    </div>
+
+    <div>
+        <h2 style="text-align: center; color: white;">Tarefas Atuais:</h2>
+        <ul>
+            {% for tarefa in tarefas_atuais %}
+                <li class="tarefa">
+                    {{ tarefa }}
+                    <form action="/remover" method="post" style="display: inline;">
+                        <input type="hidden" name="tarefa" value="{{ tarefa }}">
+                        <button type="submit" class="botao-remover">x</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Botão para exibir as tarefas passadas -->
+    <button onclick="mostrarTarefasPassadas()" class="botao-tarefas-passadas">Mostrar Tarefas Passadas</button>
+    <p class="texto-canto">Giuseppe Bertholdi Produções.</p>
+</body>
+</html>

@@ -1,0 +1,181 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(200deg, #542c88, #815ca3);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+.lista-tarefa {
+    max-width: 800px;
+    width: 90%;
+    margin: 30px auto;
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(200deg, #6a4c9c, #4b3b6e);
+    background-size: 400% 400%; /* Tamanho maior para o gradiente se mover */
+    animation: gradientAnimation 10s ease infinite; /* Animação suave do gradiente */
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #dadada;
+}
+
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+    }
+.input-bonito {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+.botao-adicionar {
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #6a5acd;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.tarefa-container {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+.tarefa {
+    font-weight: bold;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.9);
+    margin-bottom: 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between; /* Alinha o conteúdo da tarefa e o botão */
+    align-items: center;
+}
+.botao-remover {
+    padding: 5px 10px;
+    font-size: 14px;
+    color: white;
+    background-color: #dc3545;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    gap: 10px;
+    font-weight: bold
+}
+.texto-canto {
+position: fixed;
+bottom: 20px; /* Posição do texto no canto inferior */
+left: 1200px;  /* Posição no canto direito */
+background-color: #4C2C92; /* Cor roxa vibrante */
+color: white;  /* Cor do texto */
+font-size: 1.5rem;
+font-weight: bold;
+padding: 15px;
+border-radius: 10px;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+text-align: center;
+transform: translateX(20px); /* Desloca um pouco para o lado para dar efeito */
+animation: slideIn 1s ease-out; /* Animação para suavizar o aparecimento */
+}
+
+/* Animação de deslizamento */
+@keyframes slideIn {
+0% {
+opacity: 0;
+transform: translateX(100px); /* Começa fora da tela */
+}
+100% {
+opacity: 1;
+transform: translateX(20px); /* Finaliza na posição normal */
+}
+}
+
+
+#tarefas-passadas {
+    display: none; /* Inicialmente oculto */
+    position: absolute;
+    top: 80px; /* Distância do topo */
+    left: 10px; /* Distância da borda direita */
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo semitransparente */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 160px; /* Largura da aba */
+    max-height: 400px;
+    overflow-y: auto; /* Permite rolagem se a lista for grande */
+}
+
+.botao-remover-tarefas-passadas {
+    padding: 5px 10px;
+    font-size: 14px;
+    color: white;
+    background-color: #dc3545; /* Vermelho */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    font-weight: bold
+}
+
+.botao-remover-tarefas-passadas:hover {
+    background-color: #c82333; /* Vermelho mais escuro */
+}
+
+.botao-tarefas-passadas {
+    width: 175px;
+    position: fixed; /* Fixa o botão na tela */
+    top: 10px; /* Distância do topo */
+    left: 10px; /* Distância da borda direita */
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #6a5acd;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.botao-tarefas-passadas:hover {
+    background-color: #5847a5; /* Tom mais escuro */
+    transform: scale(1.1);
+}
+.texto-canto {
+    font-style: italic;
+    position: fixed;
+    bottom: 0px;
+    right: 5px;
+    font-size: 12px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
